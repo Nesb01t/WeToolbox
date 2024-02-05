@@ -1,10 +1,12 @@
 package nesb01t.spigot.cmds;
 
 import nesb01t.spigot.Service;
+import nesb01t.spigot.message.MessageHelper;
 import nesb01t.spigot.service.alias.AliasService;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.Objects;
 
@@ -19,6 +21,7 @@ public class WtCommand implements CommandExecutor {
         SET_ALIAS,
         DEL_ALIAS,
         GET_ALIAS,
+        DEFAULT
     }
 
     @Override
@@ -30,19 +33,34 @@ public class WtCommand implements CommandExecutor {
             return false;
         }
 
+        if (!(commandSender instanceof Player player)) {
+            System.out.println("please use this command in game");
+            return false;
+        }
+
         if (type.equals(WtCommandType.SET_ALIAS)) {
-            aliasService.setAlias(strings[2], strings[3]);
+            var a = aliasService.setAlias(strings[1], strings[2]);
+            WtCommandMsg.setAliasSuccess(player, a);
         }
 
         if (type.equals(WtCommandType.DEL_ALIAS)) {
-
+            var r = aliasService.removeAlias(strings[1]);
+            if (r) {
+                WtCommandMsg.delAliasSuccess(player, strings[1]);
+            } else {
+                WtCommandMsg.delAliasFailed(player, strings[1]);
+            }
         }
 
         if (type.equals(WtCommandType.GET_ALIAS)) {
-
+            WtCommandMsg.getAliases(player, aliasService.listAlias());
         }
 
-        return false;
+        if (type.equals(WtCommandType.DEFAULT)) {
+            WtCommandMsg.sendUsage(player);
+        }
+
+        return true;
     }
 
     private boolean validate(Command cmd) {
@@ -53,13 +71,13 @@ public class WtCommand implements CommandExecutor {
     }
 
     private WtCommandType getCommandType(String[] args) {
-        if (args.length <= 1 || args[1].equalsIgnoreCase("get")) {
+        if (args.length == 0 || args[0].equalsIgnoreCase("get")) {
             return WtCommandType.GET_ALIAS;
-        } else if (args[1].equalsIgnoreCase("set")) {
+        } else if (args.length > 2 && args[0].equalsIgnoreCase("set")) {
             return WtCommandType.SET_ALIAS;
-        } else if (args[1].equalsIgnoreCase("del")) {
+        } else if (args.length == 2 && args[0].equalsIgnoreCase("del")) {
             return WtCommandType.DEL_ALIAS;
         }
-        return null;
+        return WtCommandType.DEFAULT;
     }
 }

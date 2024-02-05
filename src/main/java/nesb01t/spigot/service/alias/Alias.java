@@ -8,4 +8,12 @@ public class Alias {
         this.name = name;
         this.command = command;
     }
+
+    public String getAlias() {
+        return name;
+    }
+
+    public String getCommand() {
+        return command;
+    }
 }
