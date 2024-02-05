@@ -10,8 +10,9 @@ public class Service {
     public static AliasConfigurator aliasConfigurator;
 
     public static void initialize() {
-        cmdConfigurator = new CmdConfigurator();
         messageConfigurator = new MessageConfigurator();
         aliasConfigurator = new AliasConfigurator();
+
+        cmdConfigurator = new CmdConfigurator(aliasConfigurator.aliasService);
     }
 }

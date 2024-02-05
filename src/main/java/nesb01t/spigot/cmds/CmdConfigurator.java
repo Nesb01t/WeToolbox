@@ -1,13 +1,14 @@
 package nesb01t.spigot.cmds;
 
 import nesb01t.spigot.WeToolbox;
+import nesb01t.spigot.service.alias.AliasService;
 import org.bukkit.command.CommandExecutor;
 
 import java.util.Objects;
 
 public class CmdConfigurator {
-    public CmdConfigurator() {
-        reg("wt", new WtCommand());
+    public CmdConfigurator(AliasService aliasService) {
+        reg("wt", new WtCommand(aliasService));
     }
 
     private static void reg(String cmdName, CommandExecutor cmdExecutor) {

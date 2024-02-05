@@ -11,8 +11,8 @@ import java.util.Objects;
 public class WtCommand implements CommandExecutor {
     private AliasService aliasService;
 
-    public WtCommand() {
-        aliasService = Service.aliasConfigurator.aliasService;
+    public WtCommand(AliasService aliasService) {
+        this.aliasService = aliasService;
     }
 
     enum WtCommandType {
