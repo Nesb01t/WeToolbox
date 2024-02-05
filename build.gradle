@@ -1,5 +1,12 @@
+// basic settings
 plugins {
     id 'java'
+}
+
+// config
+ext {
+    autoCopyJarFileWhenBuild = true
+    autoCopyJarFileRoute = "D:\\ender-place\\server\\plugins"
 }
 
 group = 'nesb01t'
@@ -17,10 +24,6 @@ repositories {
     }
 }
 
-dependencies {
-    compileOnly "org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT"
-}
-
 def targetJavaVersion = 17
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
@@ -31,6 +34,12 @@ java {
     }
 }
 
+// dependency
+dependencies {
+    compileOnly "org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT"
+}
+
+// task
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 
@@ -38,6 +47,14 @@ tasks.withType(JavaCompile).configureEach {
         options.release.set(targetJavaVersion)
     }
 }
+
+task copyDistJar(type: Copy) {
+    from jar
+    into autoCopyJarFileRoute
+    rename { "WeToolbox-dev.jar" }
+    onlyIf { autoCopyJarFileWhenBuild }
+}
+build.finalizedBy(copyDistJar)
 
 processResources {
     def props = [version: version]
