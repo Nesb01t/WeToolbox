@@ -1,4 +1,4 @@
-package nesb01t.spigot.message;
+package nesb01t.WeToolbox.message;
 
 public class ColorHelper {
     public enum Color {

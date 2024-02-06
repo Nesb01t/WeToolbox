@@ -1,4 +1,4 @@
-package nesb01t.spigot.service.alias;
+package nesb01t.WeToolbox.service.alias;
 
 public class Alias {
     public String name;

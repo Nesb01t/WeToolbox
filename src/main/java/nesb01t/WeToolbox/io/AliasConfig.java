@@ -1,7 +1,7 @@
-package nesb01t.spigot.io;
+package nesb01t.WeToolbox.io;
 
-import nesb01t.spigot.service.alias.Alias;
-import nesb01t.spigot.service.alias.AliasService;
+import nesb01t.WeToolbox.service.alias.Alias;
+import nesb01t.WeToolbox.service.alias.AliasService;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;

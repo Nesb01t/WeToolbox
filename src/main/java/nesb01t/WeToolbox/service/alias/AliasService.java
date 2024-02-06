@@ -1,6 +1,6 @@
-package nesb01t.spigot.service.alias;
+package nesb01t.WeToolbox.service.alias;
 
-import nesb01t.spigot.Service;
+import nesb01t.WeToolbox.Service;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
-package nesb01t.spigot.cmds;
+package nesb01t.WeToolbox.cmds;
 
-import nesb01t.spigot.WeToolbox;
-import nesb01t.spigot.service.alias.AliasService;
+import nesb01t.WeToolbox.WeToolbox;
+import nesb01t.WeToolbox.service.alias.AliasService;
 import org.bukkit.command.CommandExecutor;
 
 import java.util.Objects;

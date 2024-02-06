@@ -1,9 +1,9 @@
-package nesb01t.spigot;
+package nesb01t.WeToolbox;
 
-import nesb01t.spigot.cmds.CmdConfigurator;
-import nesb01t.spigot.io.AliasConfig;
-import nesb01t.spigot.message.MessageConfigurator;
-import nesb01t.spigot.service.alias.AliasConfigurator;
+import nesb01t.WeToolbox.cmds.CmdConfigurator;
+import nesb01t.WeToolbox.io.AliasConfig;
+import nesb01t.WeToolbox.message.MessageConfigurator;
+import nesb01t.WeToolbox.service.alias.AliasConfigurator;
 
 public class Service {
     public static CmdConfigurator cmdConfigurator;

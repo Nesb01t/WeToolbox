@@ -1,7 +1,5 @@
-package nesb01t.spigot.message;
+package nesb01t.WeToolbox.message;
 
-import nesb01t.spigot.service.alias.Alias;
-import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;

@@ -1,4 +1,4 @@
-package nesb01t.spigot;
+package nesb01t.WeToolbox;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

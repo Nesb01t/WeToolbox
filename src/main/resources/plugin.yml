@@ -1,6 +1,6 @@
 name: WeToolbox
 version: '${version}'
-main: nesb01t.spigot.WeToolbox
+main: nesb01t.WeToolbox.WeToolbox
 api-version: '1.20'
 commands:
   wt:
