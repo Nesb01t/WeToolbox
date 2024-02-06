@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import java.util.Objects;
 
 public class WtCommand implements CommandExecutor {
-    private AliasService aliasService;
+    private final AliasService aliasService;
 
     public WtCommand(AliasService aliasService) {
         this.aliasService = aliasService;
@@ -26,29 +26,37 @@ public class WtCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+        // validate
         if (!validate(command)) return false;
-
-        WtCommandType type = getCommandType(strings);
-        if (Objects.isNull(type)) {
-            return false;
-        }
-
         if (!(commandSender instanceof Player player)) {
             System.out.println("please use this command in game");
             return false;
         }
 
+        // command type (get, del or set)
+        WtCommandType type = getCommandType(strings);
+        if (Objects.isNull(type)) {
+            return false;
+        }
+
         if (type.equals(WtCommandType.SET_ALIAS)) {
-            var a = aliasService.setAlias(strings[1], strings[2]);
+            String name = strings[1];
+            StringBuilder cmd = new StringBuilder(strings[2]);
+            for (int i = 3; i < strings.length; i++) {
+                cmd.append(" ").append(strings[i]);
+            }
+
+            var a = aliasService.setAlias(name, cmd.toString());
             WtCommandMsg.setAliasSuccess(player, a);
         }
 
         if (type.equals(WtCommandType.DEL_ALIAS)) {
-            var r = aliasService.removeAlias(strings[1]);
+            String name = strings[1];
+            var r = aliasService.removeAlias(name);
             if (r) {
-                WtCommandMsg.delAliasSuccess(player, strings[1]);
+                WtCommandMsg.delAliasSuccess(player, name);
             } else {
-                WtCommandMsg.delAliasFailed(player, strings[1]);
+                WtCommandMsg.delAliasFailed(player, name);
             }
         }
 

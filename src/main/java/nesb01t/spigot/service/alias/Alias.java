@@ -9,7 +9,7 @@ public class Alias {
         this.command = command;
     }
 
-    public String getAlias() {
+    public String getName() {
         return name;
     }
 

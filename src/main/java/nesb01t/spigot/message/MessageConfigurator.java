@@ -2,7 +2,7 @@ package nesb01t.spigot.message;
 
 public class MessageConfigurator {
     public MessageConfigurator() {
-        prefix = "[ WeToolbox ] ";
+        prefix = "&l≬ &eWeToolbox &f&l≬ &7";
     }
 
     public static String prefix;

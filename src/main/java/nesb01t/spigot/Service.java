@@ -1,6 +1,7 @@
 package nesb01t.spigot;
 
 import nesb01t.spigot.cmds.CmdConfigurator;
+import nesb01t.spigot.io.AliasConfig;
 import nesb01t.spigot.message.MessageConfigurator;
 import nesb01t.spigot.service.alias.AliasConfigurator;
 
@@ -9,10 +10,13 @@ public class Service {
     public static MessageConfigurator messageConfigurator;
     public static AliasConfigurator aliasConfigurator;
 
+    public static AliasConfig aliasConfig;
+
     public static void initialize() {
         messageConfigurator = new MessageConfigurator();
         aliasConfigurator = new AliasConfigurator();
-
         cmdConfigurator = new CmdConfigurator(aliasConfigurator.aliasService);
+
+        aliasConfig = new AliasConfig(aliasConfigurator.aliasService);
     }
 }
