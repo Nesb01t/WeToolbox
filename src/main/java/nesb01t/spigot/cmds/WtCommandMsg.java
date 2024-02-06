@@ -2,7 +2,10 @@ package nesb01t.spigot.cmds;
 
 import nesb01t.spigot.message.MessageHelper;
 import nesb01t.spigot.service.alias.Alias;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -46,8 +49,8 @@ public class WtCommandMsg {
 
     private static TextComponent buildAliasRunMessage(Alias a) {
         TextComponent message = new TextComponent("&7 · Alias &b" + a.getName() + "&7 Command &f" + a.getCommand());
-//        message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, a.getCommand()));
-//        message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Click to run command " + a.getCommand())));
+        message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, a.getCommand()));
+        message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Click to run command " + a.getCommand())));
         return message;
     }
 }
